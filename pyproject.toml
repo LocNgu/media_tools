@@ -1,0 +1,49 @@
+[project]
+name = "media-tools"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "tecno",email = "tecno-pro@tuta.io"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "media_tools", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+ruff = "^0.11.8"
+pytest = "^8.3.5"
+mypy = "^1.15.0"
+pre-commit = "^4.2.0"
+coverage = "^7.8.0"
+pytest-cov = "^6.1.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+lint.select = ["E", "F", "I"]  # E: pycodestyle, F: pyflakes, I: isort
+lint.ignore = []
+src = ["src"]
+extend-select = ["I"]  # Enable import sorting (like isort)
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+show_error_codes = true
+ignore_missing_imports = true
