@@ -2,7 +2,6 @@ import hashlib
 import logging
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List
 
 
 def find_duplicates(paths: list, mode: str = "name") -> dict:
@@ -19,12 +18,12 @@ def find_duplicates(paths: list, mode: str = "name") -> dict:
         raise ValueError("Invalid mode. Choose 'name', 'checksum', or 'both'.")
 
 
-def find_duplicates_by_name(paths: list) -> dict:
+def find_duplicates_by_name(paths: list) -> dict[str, list[Path]]:
     """find_duplicates_by_name
     Find duplicate files in a directory based on their basename.
     """
     files = [p for path in paths for p in path.rglob("*") if p.is_file()]
-    groups: Dict[str, List[Path]] = defaultdict(list)
+    groups: dict[str, list[Path]] = defaultdict(list)
     for file in files:
         groups[file.name].append(file)
     return {k: file_list for k, file_list in groups.items() if len(file_list) > 1}
@@ -36,7 +35,7 @@ def find_duplicates_by_checksum(paths: list) -> dict:
     """
 
     files = [p for path in paths for p in path.rglob("*") if p.is_file()]
-    groups: Dict[str, List[Path]] = defaultdict(list)
+    groups: dict[str, list[Path]] = defaultdict(list)
     for file in files:
         with open(file, "rb") as f:
             content = f.read()
@@ -53,7 +52,7 @@ def find_duplicates_by_both(paths: list) -> dict:
     import hashlib
 
     files = [p for path in paths for p in path.rglob("*") if p.is_file()]
-    groups: Dict[str, List[Path]] = defaultdict(list)
+    groups: dict[str, list[Path]] = defaultdict(list)
     for file in files:
         with open(file, "rb") as f:
             content = f.read()
@@ -63,8 +62,8 @@ def find_duplicates_by_both(paths: list) -> dict:
 
 
 def delete_duplicates(
-    duplicate_groups: Dict[str, List[Path]], dry_run: bool = True, keep: int = 1
-) -> List[Path]:
+    duplicate_groups: dict[str, list[Path]], dry_run: bool = True, keep: int = 1
+) -> list[Path]:
     deleted = []
 
     for group in duplicate_groups.values():

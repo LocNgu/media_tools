@@ -1,20 +1,19 @@
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List
 
 RAW_EXTS = [".raw", ".cr2", ".nef", ".arw", ".dng", ".raf"]
 JPEG_EXTS = [".jpg", ".jpeg"]
 
 
 def find_jpeg_raw_pairs(
-    dirs: List[Path],
-    raw_exts: List[str] = RAW_EXTS,
-    jpeg_exts: List[str] = JPEG_EXTS,
+    dirs: list[Path],
+    raw_exts: list[str] = RAW_EXTS,
+    jpeg_exts: list[str] = JPEG_EXTS,
     dry_run: bool = True,
-) -> Dict[str, List[Path]]:
-    raw_map: Dict[str, List[Path]] = defaultdict(list)
+) -> dict[str, list[Path]]:
+    raw_map: dict[str, list[Path]] = defaultdict(list)
     jpeg_basenames = set()
-    duplicates: Dict[str, List[Path]] = defaultdict(list)
+    duplicates: dict[str, list[Path]] = defaultdict(list)
 
     for dir in dirs:
         for file in dir.rglob("*"):
