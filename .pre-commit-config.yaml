@@ -14,6 +14,6 @@ repos:
     hooks:
       - id: run-pytest
         name: Run unit tests
-        entry: pytest
+        entry: poetry run pytest
         language: system  # or python if you prefer a venv
         types: [python]
