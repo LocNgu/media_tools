@@ -9,5 +9,8 @@
         "plaintext": false,
         "markdown": false,
         "scminput": false
-    }
+    },
+    "python.analysis.extraPaths": [
+        "./src/media_tools"
+    ]
 }

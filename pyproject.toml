@@ -2,16 +2,13 @@
 name = "media-tools"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "tecno",email = "tecno-pro@tuta.io"}
-]
+authors = [{ name = "tecno", email = "tecno-pro@tuta.io" }]
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-]
+dependencies = ["typer (>=0.15.3,<0.16.0)"]
 
 [tool.poetry]
-packages = [{include = "media_tools", from = "src"}]
+packages = [{ include = "media_tools", from = "src" }]
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
@@ -31,11 +28,16 @@ line-length = 88
 target-version = ["py311"]
 
 [tool.ruff]
+lint.select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+] # E: pycodestyle, F: pyflakes, I: isort, UP: pyupgrade
 line-length = 88
-lint.select = ["E", "F", "I"]  # E: pycodestyle, F: pyflakes, I: isort
 lint.ignore = []
 src = ["src"]
-extend-select = ["I"]  # Enable import sorting (like isort)
+target-version = "py312"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -47,3 +49,6 @@ python_version = "3.11"
 strict = true
 show_error_codes = true
 ignore_missing_imports = true
+
+[project.scripts]
+media-tools = "app.gui.cli:run"
