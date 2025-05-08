@@ -1,13 +1,10 @@
-[project]
+[tool.poetry]
 name = "media-tools"
 version = "0.1.0"
 description = "suit of tools for media processing"
-authors = [{ name = "tecno", email = "tecno-pro@tuta.io" }]
+authors = [ "tecno tecno-pro@tuta.io"]
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["typer (>=0.15.3,<0.16.0)"]
-
-[tool.poetry]
 packages = [{ include = "media_tools", from = "src" }]
 
 [tool.poetry.group.dev.dependencies]
