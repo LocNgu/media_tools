@@ -1,7 +1,7 @@
 [project]
 name = "media-tools"
 version = "0.1.0"
-description = ""
+description = "suit of tools for media processing"
 authors = [{ name = "tecno", email = "tecno-pro@tuta.io" }]
 readme = "README.md"
 requires-python = ">=3.12"
