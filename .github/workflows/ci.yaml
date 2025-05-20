@@ -28,7 +28,7 @@ jobs:
         run: poetry install
 
       - name: Run ruff
-        run: poetry run ruff .
+        uses: astral-sh/ruff-action@v3
 
       - name: Run black check
         run: poetry run black --check .
