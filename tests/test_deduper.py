@@ -38,7 +38,7 @@ def test_find_duplicates_by_both():
         tempfile.TemporaryDirectory() as tmpdir2,
     ):
         p1 = Path(tmpdir) / "file1.jpg"
-        p2 = Path(tmpdir2) / "file1.jpg"
+        p2 = Path(tmpdir2) / "file1.JPG"
         p3 = Path(tmpdir) / "file3.jpg"
 
         write_file(p1, b"same")
